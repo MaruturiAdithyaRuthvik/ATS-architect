@@ -5,7 +5,7 @@ from fpdf import FPDF
 import json
 
 # --- 1. API SETUP ---
-genai.configure(api_key="AIzaSyDPgTvG86c9EK9O7TbbiUPRAlEfabhxxu4")
+genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 
 # --- 2. THE PDF TEMPLATE DESIGN ---
 class ResumePDF(FPDF):
@@ -112,4 +112,5 @@ if st.button("Generate Flawless Resume"):
             st.success("Resume built successfully with perfect formatting!")
             
             with open(final_pdf_path, "rb") as f:
+
                 st.download_button("📥 Download Perfect Resume", f, "Optimized_Resume.pdf")
